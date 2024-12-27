@@ -1,0 +1,141 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="container">
+    <br>
+    <h2>Search Result</h2>
+    
+    {% if product|length < 1 %}
+    <p>No product found</p>
+    {% endif %}
+</div>
+
+        <!-- Shop Page Start  -->
+        <div class="shop-category-area pt-100px pb-100px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Shop Bottom Area Start -->
+                        <div class="shop-bottom-area">
+                            <!-- Tab Content Area Start -->
+                            <div class="row">
+                                <div class="col">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="shop-grid">
+                                            <div class="row mb-n-30px">
+                                                
+                                                {% for i in product %}
+                                                    
+                                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 mb-30px">
+                                                    <!-- Single Prodect -->
+                                                    <div class="product">
+                                                        <span class="badges">
+                                                        <span class="new">{{i.condition}}</span>
+                                                        </span>
+                                                        <div class="thumb">
+                                                            <a href="single-product.html" class="image">
+                                                                <img src="{{i.image.url}}" alt="Product" height="250px"/>
+                                                                <img class="hover-image" src="{{i.image.url}}" alt="Product" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="content">
+                                                            <span class="category"><a href="#">{{i.categories}}</a></span>
+                                                            <h5 class="title"><a href="single-product.html">{{i.name|truncatechars:70}}
+                                                                </a>
+                                                            </h5>
+                                                            <span class="price">
+                                                            <span class="new">${{i.price}}</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="actions">
+                                                            <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
+                                                                class="pe-7s-shopbag"></i></button>
+                                                            <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
+                                                                    class="pe-7s-like"></i></button>
+                                                            <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal-{{forloop.counter}}"><i class="pe-7s-look"></i></button>
+                                                            <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
+                                                                    class="pe-7s-refresh-2"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade show active mb-n-30px " id="shop-list">
+                                            <div class="shop-list-wrapper mb-30px">
+                                                <div class="row">
+                                                    
+                                                    {% for i in products %}
+                                                        
+                                                    <div class="col-md-5 col-lg-5 col-xl-4 mb-lm-30px">
+                                                        <div class="product">
+                                                            <div class="thumb">
+                                                                <a href="single-product.html" class="image">
+                                                                    <img src="{{i.image.url}}" alt="Product" height="250px" />
+                                                                    <img class="hover-image" src="{{i.image.url}}" alt="Product" />
+                                                                </a>
+                                                                <span class="badges">
+                                                                <span class="new">{{i.condtion}}</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-7 col-lg-7 col-xl-8">
+                                                        <div class="content-desc-wrap">
+                                                            <div class="content">
+                                                                <span class="category"><a href="#">{{i.categories}}</a></span>
+                                                                <h5 class="title"><a href="single-product.html">{{i.name}}</a></h5>
+                                                                <p>{{i.description|truncatechars:50}} </p>
+                                                            </div>
+                                                            <div class="box-inner">
+                                                                <span class="price">
+                                                  
+                                                                    <span class="new">${{i.price}}</span>
+                                                                </span>
+                                                                <div class="actions">
+                                                                    <button title="Add To Cart" class="action add-to-cart" data-bs-toggle="modal" data-bs-target="#exampleModal-Cart"><i
+                                                                        class="pe-7s-shopbag"></i></button>
+                                                                    <button class="action wishlist" title="Wishlist" data-bs-toggle="modal" data-bs-target="#exampleModal-Wishlist"><i
+                                                                            class="pe-7s-like"></i></button>
+                                                                    <button class="action quickview" data-link-action="quickview" title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal-{{forloop.counter}}"><i class="pe-7s-look"></i></button>
+                                                                    <button class="action compare" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal-Compare"><i
+                                                                            class="pe-7s-refresh-2"></i></button>
+                                                                </div>
+                                                                <br><br>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Tab Content Area End -->
+                            <!--  Pagination Area Start -->
+                            <div class="pro-pagination-style text-center text-lg-end" data-aos="fade-up" data-aos-delay="200">
+                                <div class="pages">
+                                    <ul>
+                                        <li class="li"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a>
+                                        </li>
+                                        <li class="li"><a class="page-link" href="#">1</a></li>
+                                        <li class="li"><a class="page-link active" href="#">2</a></li>
+                                        <li class="li"><a class="page-link" href="#">3</a></li>
+                                        <li class="li"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--  Pagination Area End -->
+                        </div>
+                        <!-- Shop Bottom Area End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Shop Page End  -->
+    
+{% endblock content %}
+    

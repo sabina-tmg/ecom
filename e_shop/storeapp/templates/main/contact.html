@@ -1,0 +1,96 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %} 
+ <!-- Contact Area Start -->
+ <div class="contact-area">
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="row">
+                <div class="col-12">
+                    <div class="contact-form">
+                        <div class="contact-title mb-30">
+                            <h2 class="title">Contact Us</h2>
+                            
+                            {% if messages %}
+                            
+                            {% for message in messages %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>{{message}}</strong>
+                              </div>
+                            {% endfor %}
+                            {% endif %}
+                                
+                        </div>
+                        <form class="contact-form-style" action="/contact/" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input name="name" placeholder="Name*" type="text" />
+                                </div>
+                                <div class="col-lg-6">
+                                    <input name="email" placeholder="Email*" type="email" />
+                                </div>
+                                <div class="col-lg-12">
+                                    <input name="subject" placeholder="Subject*" type="subject" />
+                                </div>
+                                <div class="col-lg-12 text-center">
+                                    <textarea name="message" placeholder="Your Message*"></textarea>
+                                    <button class="btn btn-danger" type="submit">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="contact-info">
+                        <div class="single-contact">
+                            <div class="icon-box">
+                                <img src="{% static 'assets/images/icons/contact-1.png' %}" alt="">
+                            </div>
+                            <div class="info-box">
+                                <h5 class="title">Address</h5>
+                                <p>Dhulikhel,kavre <br>
+                                pakucha</p>
+                            </div>
+                        </div>
+                        <div class="single-contact">
+                            <div class="icon-box">
+                                <img src="{% static 'assets/images/icons/contact-2.png' %}" alt="">
+                            </div>
+                            <div class="info-box">
+                                <h5 class="title">Phone No</h5>
+                                <p><a href="tel:9849927317">9849927317</a></p>
+                            </div>
+                        </div>
+                        <div class="single-contact m-0">
+                            <div class="icon-box">
+                                <img src="{% static 'assets/images/icons/contact-3.png' %}" alt="">
+                            </div>
+                            <div class="info-box">
+                                <h5 class="title">Email</h5>
+                                <p><a href="mailto:syangtansabina@gmail.com">syangtansabina8@gmail.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact Area End -->
+<!-- map Area Start -->
+<div class="contact-map">
+    <div id="mapid">
+        <div class="mapouter">
+            <div class="gmap_canvas">
+                <iframe id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28280.075374008746!2d85.53793035045899!3d27.624224852635184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb08e1e0b24703%3A0xbfe3729cdad70132!2sDhulikhel!5e0!3m2!1sen!2snp!4v1729762747688!5m2!1sen!2snp"></iframe>
+                <a href="https://sites.google.com/view/maps-api-v2/mapv2"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- map Area End -->
+    
+{% endblock content %}
+    
